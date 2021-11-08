@@ -744,7 +744,7 @@ function process_xsd_derive_builtin_pattern(typename, node::ASTNode, facetnodes=
       warn(node, "existence of xs:IDREF not enforced")
       pattern = "\\i\\c*"
     elseif typename == "xs:decimal"
-      pattern = "[+-]?([0-9]+|[0-9]*\.[0-9]+)" # TODO permits -0
+      pattern = "[+-]?([0-9]+|[0-9]*\\.[0-9]+)" # TODO permits -0
     elseif typename == "xs:integer"
       pattern = "[+-]?[0-9]+"  # TODO permits -0
     elseif typename == "xs:positiveInteger"
@@ -756,9 +756,9 @@ function process_xsd_derive_builtin_pattern(typename, node::ASTNode, facetnodes=
     elseif typename == "xs:nonNegativeInteger"
       pattern = "\\+?[0-9]+"
     elseif typename == "xs:float"
-      pattern = "[+-]?([0-9]+|[0-9]*\.[0-9]+)(E[+-]?[0-9]+)?|INF|-INF|NaN" # TODO not restricted to 32-bit float? permits E-0
+      pattern = "[+-]?([0-9]+|[0-9]*\\.[0-9]+)(E[+-]?[0-9]+)?|INF|-INF|NaN" # TODO not restricted to 32-bit float? permits E-0
     elseif typename == "xs:double"
-      pattern = "[+-]?([0-9]+|[0-9]*\.[0-9]+)(E[+-]?[0-9]+)?|INF|-INF|NaN" # TODO not restricted to 64-bit float? permits E-0
+      pattern = "[+-]?([0-9]+|[0-9]*\\.[0-9]+)(E[+-]?[0-9]+)?|INF|-INF|NaN" # TODO not restricted to 64-bit float? permits E-0
     elseif typename == "xs:boolean"
       pattern = "true|false"
     elseif typename in ["xs:date","xs:time","xs:dateTime"]
