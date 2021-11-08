@@ -1,4 +1,4 @@
-type ASTNode
+struct ASTNode
 	func::Symbol
 	children::Vector{ASTNode}
 	args::Dict{Symbol,Any}

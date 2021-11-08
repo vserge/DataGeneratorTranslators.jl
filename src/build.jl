@@ -1,4 +1,4 @@
-type RuleSource
+struct RuleSource
   rulename::Symbol
   args::Vector{Any}
   comments::Vector{AbstractString}

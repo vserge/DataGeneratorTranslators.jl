@@ -1,8 +1,8 @@
-type TypeGenerationException <: Exception
+struct TypeGenerationException <: Exception
 	func::Symbol
 	msg::AbstractString
-	caught::Union{Exception, Void}
-	function TypeGenerationException(func::Symbol, msg::AbstractString, caught::Union{Exception, Void}=nothing)
+	caught::Union{Exception, Nothing}
+	function TypeGenerationException(func::Symbol, msg::AbstractString, caught::Union{Exception, Nothing}=nothing)
 		new(func, msg, caught)
 	end
 end

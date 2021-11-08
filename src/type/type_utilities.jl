@@ -1,6 +1,6 @@
 # TODO: add comments (including assumptions, and quirks of subtype)
 
-type SimplifiedMethod
+struct SimplifiedMethod
 	name::String
 	sig::DataType
 end
@@ -189,7 +189,8 @@ is_partially_supported(u::Union, supporteddts::Vector{DataType}) = all(p -> is_p
 is_partially_supported(tv::TypeVar, supporteddts::Vector{DataType}) = is_partially_supported(tv.ub, supporteddts)
 	# TODO lb?
 
-is_partially_supported(tc::TypeConstructor, supporteddts::Vector{DataType}) = is_partially_supported(tc.body, supporteddts)
+# Switchoff becouse TypeConstructor not recomended in julia after 1.0
+#is_partially_supported(tc::TypeConstructor, supporteddts::Vector{DataType}) = is_partially_supported(tc.body, supporteddts)
 
 is_partially_supported(x::Any, supporteddts::Vector{DataType}) = true # for type parameters such as integers etc.
 
@@ -215,7 +216,8 @@ is_fully_supported(u::Union, supporteddts::Vector{DataType}) = all(p -> is_fully
 is_fully_supported(tv::TypeVar, supporteddts::Vector{DataType}) = is_fully_supported(tv.ub, supporteddts)
 	# TODO lb?
 
-is_fully_supported(tc::TypeConstructor, supporteddts::Vector{DataType}) = is_fully_supported(tc.body, supporteddts)
+# Switchoff becouse TypeConstructor not recomended in julia after 1.0
+#is_fully_supported(tc::TypeConstructor, supporteddts::Vector{DataType}) = is_fully_supported(tc.body, supporteddts)
 
 is_fully_supported(x::Any, supporteddts::Vector{DataType}) = true # for type parameters such as integers etc.
 
@@ -235,7 +237,8 @@ type_as_parseable_string(tv::TypeVar) = "TypeVar(Symbol(\"" * string(tv.name) * 
 
 type_as_parseable_string(dt::DataType) = string(dt.name) * (dt === primary_datatype(dt) ? "" : "{" * join(map(p -> type_as_parseable_string(p), dt.parameters), ",") * "}") # note: === rather than == on testing primary datatypes is necessary to ensure parameters match (e.g. bound/unbound TypeVars)
 
-type_as_parseable_string(tc::TypeConstructor) = type_as_parseable_string(tc.body)
+# Switchoff becouse TypeConstructor not recomended in julia after 1.0
+#type_as_parseable_string(tc::TypeConstructor) = type_as_parseable_string(tc.body)
 
 type_as_parseable_string(u::Union) = "Union" * "{" * join(map(p -> type_as_parseable_string(p), u.types), ",") * "}" # note: Union{} is distinct from Union, so always output the curly braces
 
