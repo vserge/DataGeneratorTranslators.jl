@@ -1,5 +1,5 @@
 using DataGeneratorTranslators
-using Base.Test
+using Test
 
 @testset "type" begin
 
